@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<script>
+			function check_os() {
+
+				var OS = "OS Inconnu";
+				if (navigator.appVersion.indexOf("Win")!=-1) OS = "Windows";
+				if (navigator.appVersion.indexOf("Mac")!=-1) OS = "MacOS";
+				if (navigator.appVersion.indexOf("X11")!=-1) OS = "Unix";
+				if (navigator.appVersion.indexOf("Linux")!=-1) OS = "Linux";
+				if (navigator.appVersion.indexOf("Android")!=-1) OS = "Android";
+				document.getElementById("my_result").innerHTML = OS;
+				document.getElementById("my_appVersion").innerHTML = "navigator.appVerion: "+navigator.appVersion;
+				document.getElementById("my_platform").innerHTML = "navigator.platform: "+navigator.platform;
+				document.getElementById("my_userAgent").innerHTML = "navigator.userAgent: "+navigator.userAgent;
+				document.getElementById("my_platfrom").innerHTML = "platform.os: "+platform.os;
+
+
+			}
+function New_Check() {
+
+
+			 const result =JSON.stringify(infoBrowser())
+
+	document.getElementById("newTest").innerText =result
+
+}
+
+
+function infoBrowser(){
+      let browserObject = new Object();
+			browserObject.OSName = "Unknown";
+			browserObject.inBrowser = typeof window !== 'undefined'
+      browserObject.UA = browserObject.inBrowser && window.navigator.userAgent.toLowerCase()
+			if (browserObject.UA.indexOf("win")						 != -1) browserObject.OSName = "Windows";
+			if (browserObject.UA.indexOf("windows nt 10.0")!= -1) browserObject.OSName = "Windows 10";
+			if (browserObject.UA.indexOf("windows nt 6.2") != -1) browserObject.OSName = "Windows 8";
+			if (browserObject.UA.indexOf("windows nt 6.1") != -1) browserObject.OSName = "Windows 7";
+			if (browserObject.UA.indexOf("windows nt 6.0") != -1) browserObject.OSName = "Windows Vista";
+			if (browserObject.UA.indexOf("windows nt 5.1") != -1) browserObject.OSName = "Windows XP";
+			if (browserObject.UA.indexOf("windows nt 5.0") != -1) browserObject.OSName = "Windows 2000";
+			if (browserObject.UA.indexOf("mac")            != -1) browserObject.OSName = "Mac/iOS";
+			if (browserObject.UA.indexOf("x11")            != -1) browserObject.OSName = "UNIX";
+			if (browserObject.UA.indexOf("linux")          != -1) browserObject.OSName = "Linux";
+			browserObject.touchPoint = navigator.maxTouchPoints
+     	browserObject.isIE =
+      browserObject.UA && /; msie|trident/i.test(browserObject.UA) && !/ucbrowser/i.test(browserObject.UA).test(browserObject.UA)
+	    browserObject.isEdge = browserObject.UA && /edg/i.test(browserObject.UA)
+	    browserObject.isAndroid = browserObject.UA && browserObject.UA.indexOf('android') > 0
+			if (browserObject.isAndroid) browserObject.OSName = "Android";
+	    browserObject.isIOS = browserObject.UA && /iphone|ipad|ipod|ios/i.test(browserObject.UA)
+			if (browserObject.isIOS) browserObject.OSName = "iOS";
+	    browserObject.isChrome =
+      browserObject.UA &&
+        /chrome|crios/i.test(browserObject.UA) &&
+        !/opr|opera|chromium|edg|ucbrowser|googlebot/i.test(browserObject.UA)
+      browserObject.isGoogleBot = browserObject.UA && /googlebot/i.test(browserObject.UA)
+      browserObject.isChromium = browserObject.UA && /chromium/i.test(browserObject.UA)
+      browserObject.isUcBrowser = browserObject.UA && /ucbrowser/i.test(browserObject.UA)
+      browserObject.isSafari =
+      browserObject.UA &&
+        /safari/i.test(browserObject.UA) &&
+        !/chromium|edg|ucbrowser|chrome|crios|opr|opera|fxios|firefox/i.test(browserObject.UA)
+      browserObject.isFirefox = browserObject.UA && /firefox|fxios/i.test(browserObject.UA) && !/seamonkey/i.test(browserObject.UA)
+      browserObject.isOpera = browserObject.UA && /opr|opera/i.test(browserObject.UA)
+      browserObject.isMobile =
+        /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(browserObject.UA) ||
+        /\b(Android|Windows Phone|iPad|iPod)\b/i.test(browserObject.UA)
+      browserObject.isSamsung = browserObject.UA && /samsungbrowser/i.test(browserObject.UA)
+      browserObject.isIPad = browserObject.UA && /ipad/.test(browserObject.UA)
+      browserObject.isIPhone = browserObject.UA && /iphone/.test(browserObject.UA)
+      browserObject.isIPod = browserObject.UA && /ipod/.test(browserObject.UA)
+			if ( browserObject.isIPad === false && browserObject.isSafari && browserObject.isIPhone===false && browserObject.isIPod === false && browserObject.touchPoint===5 ) 	browserObject.isIPad = true;
+			return browserObject;
+}
+
+
+
+		</script>
+	</head>
+	<body>
+		<div id="my_result">
+		</div>
+
+		<div id="my_appVersion"></div>
+		<div id="my_platform"></div>
+		<div id="my_appVersion"></div>
+		<div id="my_userAgent"></div>
+
+		<div id="my_platfrom"></div>
+
+
+<input type="button" onclick="check_os()" value="CHECK_OS" />
+<input type="button" onclick="New_Check()" value="New CHECK" />
+
+	<div id="newTest"> </div>
+	</body>
+</html>
