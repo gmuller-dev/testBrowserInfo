@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script> 
+			function check_os() {
+			
+				var OS = "OS Inconnu"; 
+				if (navigator.appVersion.indexOf("Win")!=-1) OS = "Windows"; 
+				if (navigator.appVersion.indexOf("Mac")!=-1) OS = "MacOS"; 
+				if (navigator.appVersion.indexOf("X11")!=-1) OS = "Unix"; 
+				if (navigator.appVersion.indexOf("Linux")!=-1) OS = "Linux";          
+				if (navigator.appVersion.indexOf("Android")!=-1) OS = "Android";
+				document.getElementById("my_result").innerHTML = OS; 
+				document.getElementById("my_appVersion").innerHTML = "navigator.appVerion: "+navigator.appVersion; 
+				document.getElementById("my_platform").innerHTML = "navigator.platform: "+navigator.platform;
+				document.getElementById("my_userAgent").innerHTML = "navigator.userAgent: "+navigator.userAgent;
+				document.getElementById("my_platfrom").innerHTML = "platform.os: "+platform.os;
+		
+
+			}
+			
+
+		</script> 
+	</head>
+	<body>
+		<div id="my_result">
+		</div>
+
+		<div id="my_appVersion"></div>
+		<div id="my_platform"></div>
+		<div id="my_appVersion"></div>
+		<div id="my_userAgent"></div>
+		
+		<div id="my_platfrom"></div>
+
+			
+<input type="button" onclick="check_os()" value="CHECK_OS" />
+	</body>
+</html>
